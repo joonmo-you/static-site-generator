@@ -84,7 +84,7 @@ def code_to_html_node(block: str) -> ParentNode:
     child = text_node_to_html_node(
         TextNode(block.lstrip("```\n").rstrip("\n```"), TextType.TEXT)
     )
-    code = ParentNode("code", child)
+    code = ParentNode("code", [child])
     return ParentNode("pre", [code])
 
 
@@ -101,7 +101,7 @@ def quote_to_html_node(block: str) -> ParentNode:
 
 def unordered_list_to_html_node(block: str) -> ParentNode:
     items = block.split("\n")
-    return ParentNode("ul", [ParentNode("li", item.lstrip("- ")) for item in items])
+    return ParentNode("ul", [ParentNode("li",text_to_children( item.lstrip("- "))) for item in items])
 
 
 def ordered_list_to_html_node(block: str) -> ParentNode:
