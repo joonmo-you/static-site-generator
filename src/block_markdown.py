@@ -50,17 +50,17 @@ def markdown_to_html_node(markdown: str):
 def block_to_html_node(block: str):
     block_type = block_to_block_type(block)
     if block_type == BlockType.PARAGRAPH:
-        pass
+        return paragraph_to_html_node(block)
     if block_type == BlockType.HEADING:
-        pass
+        return heading_to_html_node(block)
     if block_type == BlockType.CODE:
-        pass
+        return code_to_html_node(block)
     if block_type == BlockType.QUOTE:
-        pass
+        return quote_to_html_node(block)
     if block_type == BlockType.UNORDERED_LIST:
-        pass
+        return unordered_list_to_html_node(block)
     if block_type == BlockType.ORDERED_LIST:
-        pass
+        return ordered_list_to_html_node(block)
     raise ValueError("invalid block type")
 
 
